@@ -2,6 +2,25 @@ function enviar() {
     let name = document.getElementById('name').value;
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
+    const form = document.getElementById('meuForm');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        if (form.checkValidity()) {
+            form.style.backgroundColor = 'pink';
+            alert('Formulário enviado com sucesso!');
+
+            setTimeout(() => {
+                form.submit();
+            }, 1000);
+        } else {
+            form.style.backgroundColor = 'lightcoral';
+            alert('Por favor, preencha todos os campos!');
+        }
+
+        titulo.textContent = 'Formulário enviado com sucesso!';
+    });
 
     let erroMsg = document.getElementById('erroMsg');
     erroMsg.textContent = '';
@@ -18,5 +37,5 @@ function enviar() {
         erroMsg.textContent = 'O campo "Senha" é obrigatório!'
     }
 
-    alert('Formulário enviado com sucesso!');
+    
 }
